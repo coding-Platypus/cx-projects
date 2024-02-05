@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cx-Project</title>
+   
+</head>
+
+<body>
+    <div class="section">
+        <div class="left-section">
+    <form>
+        <div class="text-section">
+        <label for="text">Text</label><br>
+        <input type="text" id="text" name="text" onkeydown= "updateButtonStyle()" value="Click me">
+        </div>
+        <div class="coloring-section">
+        <div class="color-section">
+        <label for="colorPicker">Color</label><br>
+        <input type="color" id="color" name="color" value="#ffffff" oninput="updateButtonStyle()">
+        </div>
+        <div class="background-section">
+        <label for="colorPicker">Background</label><br>
+        
+        <input type="color" id="background" name="background" value="#0000ff" oninput="updateButtonStyle()">
+        </div>
+    </div>
+        <div class="border-section">
+        <label for="borderRadius">Border radius</label><br>
+        <input type="range" id="borderRadius" name="borderRadius" min="0" max="100" step="1" value="0" oninput="updateButtonStyle()">
+    </div>
+      </form> 
+      </div>
+      <div class="right-section">
+      <button id="customButton">Click me</button>
+    </div>
+    </div>
+      <script src="script.js"></script>
+      </body>
+      </html>
