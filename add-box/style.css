@@ -1,0 +1,18 @@
+button{
+    padding: 0.5rem 1rem;
+}
+
+.box{
+    background-color:darkmagenta;
+    text-align: center;
+    width: 10%;
+    height: 10%;
+    line-height: 100px;
+    font-size: 20px;
+    margin-top: 1rem;
+}
+
+#boxContainer{
+    display:flex;
+    gap: 1rem;
+}
