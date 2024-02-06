@@ -10,6 +10,7 @@ button{
     line-height: 100px;
     font-size: 20px;
     margin-top: 1rem;
+    cursor: pointer;
 }
 
 #boxContainer{
