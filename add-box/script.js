@@ -3,11 +3,12 @@ const boxContainer = document.querySelector('#boxContainer');
 let boxCounter = 0;
 
 function handleClick(event){
-    event.target.style.backgroundColor = "red";
-}
-
-function handleDblClick(event){
-    event.target.remove();
+    if(event.target.style.backgroundColor == 'red') {
+        event.target.remove();
+    } else {
+        event.target.style.backgroundColor = "red"; 
+    }
+    
 }
 
 button.addEventListener('click', ()=> {
@@ -17,7 +18,6 @@ button.addEventListener('click', ()=> {
     newBox.setAttribute('id', `box-${boxCounter}`)
     boxCounter++;
     newBox.addEventListener('click', handleClick);
-    newBox.addEventListener('dblclick', handleDblClick);
     boxContainer.appendChild(newBox);
 })
 
