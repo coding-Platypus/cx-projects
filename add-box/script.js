@@ -20,7 +20,7 @@ button.addEventListener('click', ()=> {
     newBox.setAttribute('id', `box-${boxCounter}`)
     boxCounter++;
     let clicked = 0;
-    newBox.addEventListener('click', ()=> {
+    newBox.addEventListener('click', (event)=> {
         clicked++;
         handleClick(event, clicked);
     });
