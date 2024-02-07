@@ -2,9 +2,11 @@ const button = document.querySelector('#button');
 const boxContainer = document.querySelector('#boxContainer');
 let boxCounter = 0;
 
-function handleClick(event){
-    if(event.target.style.backgroundColor == 'red') {
+function handleClick(event, clicked){
+    if(clicked === 3) {
         event.target.remove();
+    } else if(clicked === 2){
+        event.target.style.backgroundColor = "green";
     } else {
         event.target.style.backgroundColor = "red"; 
     }
@@ -17,7 +19,11 @@ button.addEventListener('click', ()=> {
     newBox.textContent = boxCounter;
     newBox.setAttribute('id', `box-${boxCounter}`)
     boxCounter++;
-    newBox.addEventListener('click', handleClick);
+    let clicked = 0;
+    newBox.addEventListener('click', ()=> {
+        clicked++;
+        handleClick(event, clicked);
+    });
     boxContainer.appendChild(newBox);
 })
 
