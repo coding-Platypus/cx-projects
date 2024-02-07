@@ -22,7 +22,7 @@ body{
     display: flex;
     padding: 20px 30px;
     position: relative;
-    margin: 100px 0;
+    margin: 100px 0 20px 0;
     z-index: 10;
 }
 
@@ -135,4 +135,43 @@ body{
     height: 100%;
     width: 0%;
     transition: width 0.1s linear;
+}
+
+.playlist-container{
+    background-color: #ffff;
+    border-radius: 15px;
+    box-shadow: 0 20px 20px 0 rgba(252, 169, 169, 0.6);
+    overflow: hidden;
+    padding-right: 1.5rem;
+}
+
+ul{
+    margin-left: -0.9rem;
+   
+}
+
+.song{
+    display: flex;
+    gap: 1rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: transform 0.2s background-color 0.1s;
+    margin-bottom: 8px;
+}
+
+.song:hover {
+    transform: scale(1.1);
+    background-color: #f4f2f2;
+  }
+.selected-song {
+    transform: scale(1.1);
+    background-color: #f4f2f2;
+}
+
+.song img {
+    width: inherit;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
 }
