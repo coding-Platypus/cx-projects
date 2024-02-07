@@ -6,9 +6,9 @@ function handleClick(event, clicked){
     if(clicked === 3) {
         event.target.remove();
     } else if(clicked === 2){
-        event.target.style.backgroundColor = "green";
+        event.target.style.backgroundColor = "red";
     } else {
-        event.target.style.backgroundColor = "red"; 
+        event.target.style.backgroundColor = "green"; 
     }
     
 }
