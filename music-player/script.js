@@ -13,46 +13,66 @@ const songList = document.querySelector('#songs');
 const songs = ['Tere_naina', 'Tumi_jantei_paro_na', 'Baundule_ghuri', 'Pehle_bhi_main'];
 let songIndex = 1;
 
-//song list
-songs.map((i,ind)=>{
-    let song = document.createElement('li');
-    let songName = document.createElement('p');
-    let cover = document.createElement('img');
-    cover.src = `images/${i}.jpg`;
+
+function createSongItem(name, index) {
+    const song = document.createElement('li');
+    const songName = document.createElement('p');
+    const cover = document.createElement('img');
+
+    cover.src = `images/${name}.jpg`;
     song.classList.add('song')
-    song.setAttribute('id', `song-${ind}`);
-    songName.innerText = i;
+    song.setAttribute('id', `song-${index}`);
+    songName.innerText = name;
     song.appendChild(songName);
     song.insertBefore(cover, songName);
     songList.appendChild(song);
 
-    song.addEventListener('click', ()=>{
-        songIndex = ind;
-        loadSong(songs[songIndex], songIndex);
-        playSong();
+    return song;
+}
+
+function handleOnSongItemClick(index) {
+    songIndex = index;
+    loadSong(songs[songIndex], songIndex);
+    playSong();
+}
+
+function createSongList() {
+    songs.forEach((song, index) => {
+        const songElement = createSongItem(song, index);
+
+        songElement.addEventListener('click', () => {
+            handleOnSongItemClick(index); 
+        })
     })
-})
+}
 
+//create intial songlist
 
-
-
-// Keep track of songs
+createSongList();
 
 
 // Initially load song info DOM
 loadSong(songs[songIndex], songIndex);
 
-// Update song details
-function loadSong(song, index){
+function removeSelectedSong() {
     let highlightedSong = document.querySelectorAll('.selected-song');
     if(highlightedSong.length > 0){
         highlightedSong[0].classList.remove('selected-song');
     }
+}
+
+function highlightSelectedSong(index){
     const selectedSong = songList.querySelector(`#song-${index}`);
     selectedSong.classList.add('selected-song');
+}
+
+// Update song details
+function loadSong(song, index){
+    removeSelectedSong();
     title.innerText = song;
     audio.src = `musics/${song}.mp3`;
     cover.src = `images/${song}.jpg`;
+    highlightSelectedSong(index);
 }
 
 
