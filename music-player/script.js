@@ -56,6 +56,7 @@ loadSong(songs[songIndex], songIndex);
 
 function removeSelectedSong() {
     let highlightedSong = document.querySelectorAll('.selected-song');
+    
     if(highlightedSong.length > 0){
         highlightedSong[0].classList.remove('selected-song');
     }
@@ -69,9 +70,11 @@ function highlightSelectedSong(index){
 // Update song details
 function loadSong(song, index){
     removeSelectedSong();
+    
     title.innerText = song;
     audio.src = `musics/${song}.mp3`;
     cover.src = `images/${song}.jpg`;
+    
     highlightSelectedSong(index);
 }
 
