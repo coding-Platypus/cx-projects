@@ -1,0 +1,34 @@
+.main-container {
+  display: flex;
+
+  /* gap: 40rem; */
+}
+
+.toast-container {
+  display: flex;
+  position: absolute;
+  right: 0;
+  padding: 0.8rem 0.5rem 0.8rem 0.5rem;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+  animation: animateright 0.4s;
+}
+
+@keyframes animateright {
+  from {
+    right: -300px;
+    opacity: 0;
+  }
+
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+.adjust-icon {
+  font-size: 0.8rem;
+  margin-left: 1.2rem;
+  margin-top: 0.1rem;
+}
