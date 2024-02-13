@@ -13,22 +13,22 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=${max_pokemon}`).then((response) 
     displayPokemons(allPokemons);
 });
 
-async function fetchPokemonDataBeforeRedirect(id){
-    try{
-        const [pokemon, pokemonSpecies] = await Promise.all([fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) => 
+async function fetchPokemonDataBeforeRedirect(id) {
+    try {
+        const [pokemon, pokemonSpecies] = await Promise.all([fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) =>
             res.json()
-        ), 
-        fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`).then((res) => 
+        ),
+        fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`).then((res) =>
             res.json()
         )])
         return true;
-    } catch(error) {
+    } catch (error) {
         console.error('Failed to fetch Pokemon data before redirect');
     }
 }
 
 function displayPokemons(pokemon) {
-    listWrapper.innerHTML="";
+    listWrapper.innerHTML = "";
 
     pokemon.forEach(pokemon => {
         const pokemonID = pokemon.url.split("/")[6];
@@ -47,15 +47,15 @@ function displayPokemons(pokemon) {
                 </div>
             `;
 
-            listItem.addEventListener("click", async () => {
-                const success = await fetchPokemonDataBeforeRedirect(pokemonID);
-                if(success){
-                    window.location.href= `./detail.html?id=${pokemonID}`;
-                }
-            })
-            listWrapper.appendChild(listItem);
+        listItem.addEventListener("click", async () => {
+            const success = await fetchPokemonDataBeforeRedirect(pokemonID);
+            if (success) {
+                window.location.href = `./detail.html?id=${pokemonID}`;
+            }
+        })
+        listWrapper.appendChild(listItem);
     });
-    
+
 }
 
 searchInput.addEventListener("keyup", handleSearch);
@@ -63,29 +63,29 @@ searchInput.addEventListener("keyup", handleSearch);
 function handleSearch() {
     const searchTerm = searchInput.value.toLowerCase();
     let filteredPokemons;
-   
 
-    if(numberFilter.checked) {
+
+    if (numberFilter.checked) {
         filteredPokemons = allPokemons.filter((pokemon) => {
             const pokemonID = pokemon.url.split("/")[6];
             return pokemonID.startsWith(searchTerm);
         })
         console.log(filteredPokemons);
-    } else if(nameFilter.checked) {
-        
+    } else if (nameFilter.checked) {
+
         filteredPokemons = allPokemons.filter((pokemon) => {
             return pokemon.name.toLowerCase().startsWith(searchTerm);
         })
         console.log(filteredPokemons);
-    }else {
+    } else {
         filteredPokemons = allPokemons;
     }
 
     displayPokemons(filteredPokemons);
 
-    if(filteredPokemons.length === 0) {
+    if (filteredPokemons.length === 0) {
         notFoundMesssage.style.display = "block";
-    } else{
+    } else {
         notFoundMesssage.style.display = "none";
     }
 }

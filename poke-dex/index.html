@@ -1,61 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedox</title>
+    <link rel="stylesheet" href="style.css" />
     <script src="./script.js" defer></script>
-</head>
-<body>
-   <main class="main">
-    <header class="header-home">
+    <script src="./search.js" defer></script>
+  </head>
+  <body>
+    <main class="main">
+      <header class="header home">
         <div class="container">
-            <div class="logo-wrapper">
-                <img src="./assets/pokeball.svg" alt="pokeball">
-                <h1>Pokedex</h1>
+          <div class="logo-wrapper">
+            <img src="./assets/pokeball.svg" alt="pokeball" />
+            <h1>Pokedex</h1>
+          </div>
+          <div class="search-wrapper">
+            <div class="search-wrap">
+              <img
+                src="./assets/search.svg"
+                alt="search icon"
+                class="search-icon"
+              />
+              <input
+                type="text"
+                class="search-input body3-fonts"
+                id="search-input"
+                placeholder="Search"
+              />
+              <img
+                src="./assets/cross.svg"
+                alt="cross icon"
+                id="search-close-icon"
+                class="search-close-icon"
+              />
             </div>
-            <div class="search-wrapper">
-                <div class="search-wrap">
-                    <img src="./assets/search.svg" alt="search icon" class="search-icon">
-                    <input type="text" class="search-input body3-fonts" id="search-input" placeholder="Search">
-                    <img src="./assets/cross.svg" alt="cross icon" id="search-close-icon" class="search-close-icon">
+            <div class="sort-wrapper">
+              <div class="sort-wrap">
+                <img
+                  src="./assets/sorting.svg"
+                  alt="shorting"
+                  id="sort-icon"
+                  class="sort-icon"
+                />
+              </div>
+              <div class="filter-wrapper">
+                <p class="body2-fonts">Sort by:</p>
+                <div class="filter-wrap">
+                  <div>
+                    <input
+                      type="radio"
+                      name="filter"
+                      id="number-filter"
+                      value="number"
+                      checked
+                    />
+                    <label for="number" class="body3-fonts">Number</label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="filter"
+                      id="name-filter"
+                      value="name"
+                    />
+                    <label for="name" class="body3-fonts">Name</label>
+                  </div>
                 </div>
-                <div class="sort-wrapper">
-                 <div class="sort-wrap">
-                    <img src="./assets/sorting.svg" alt="shorting" 
-                    id="sort-icon" class="sort-icon">
-                 </div>
-                 <div class="filter-wrapper">
-                    <p class="body2-fonts">Sort by:</p>
-                    <div class="filter-wrap">
-                        <div>
-                            <input type="radio" name="filter" id="number-filter"
-                            value="number"
-                            checked>
-                            <label for="number"
-                            class="body3-fonts">Number</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="filter" id="name-filter"
-                            value="name">
-                            <label for="name"
-                            class="body3-fonts">Name</label>
-                        </div>
-                    </div>
-                 </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </header>
-    <section class="pokemon-list">
+      </header>
+      <section class="pokemon-list">
         <div class="container">
-            <div class="list-wrapper">
-
-            </div>
-            <div id="not-found-message">Pokemon Not Found</div>
+          <div class="list-wrapper"></div>
+          <div id="not-found-message">Pokemon Not Found</div>
         </div>
-    </section>
-   </main> 
-   
-</body>
+      </section>
+    </main>
+  </body>
 </html>
