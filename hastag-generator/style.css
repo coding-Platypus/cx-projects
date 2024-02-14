@@ -1,0 +1,39 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+.container {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn {
+  background-color: green;
+  border: 0px;
+  padding: 15px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.form-container {
+}
+.tag {
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 10px;
+}
+#tag-container {
+  display: flex;
+  gap: 20px;
+}
