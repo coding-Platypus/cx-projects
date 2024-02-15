@@ -25,6 +25,11 @@ body {
   color: #fff;
   font-weight: bold;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
 }
 .form-container {
 }
@@ -32,8 +37,53 @@ body {
   background-color: #eee;
   border-radius: 5px;
   padding: 10px;
+  cursor: pointer;
+  animation: popup 0.1s ease-in-out;
+  transition: transform 0.5s;
 }
 #tag-container {
   display: flex;
   gap: 20px;
+}
+
+@keyframes popup {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.tag:active,
+.copy-icon:active {
+  transform: scale(0.8);
+}
+
+.copy-icon {
+  padding-top: 30px;
+  padding-left: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.loader {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #3498db;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  animation: spin 1s linear infinite;
+  display: none;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
