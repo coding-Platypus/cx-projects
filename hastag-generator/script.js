@@ -2,8 +2,6 @@ const tagContainer = document.getElementById("tag-container");
 const generateButton = document.querySelector('.btn');
 const loader = document.querySelector('.loader');
 
-let index = 0;
-
 function getRandomColor() {
     const letters = "0123456789ABCDEF";
     let color = "#";
@@ -115,7 +113,7 @@ function renderHashtagElements(hashtags) {
 
     createCopyAllHashtags(hashtags);
 
-    hashtags.forEach((text) => {
+    hashtags.forEach((text, index) => {
         if (index >= hashtags.length) {
             return;
         }
@@ -126,7 +124,6 @@ function renderHashtagElements(hashtags) {
             tagContainer.appendChild(element);
         }, index * 500)
 
-        index++;
     });
 }
 
