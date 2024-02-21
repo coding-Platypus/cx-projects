@@ -9,10 +9,10 @@ function App() {
     borderRadius: "0",
   });
 
-  function handleStyles(property, newValue) {
+  function handleStyles(properties) {
     const newStyles = {
       ...styles,
-      [property]: newValue,
+      ...properties,
     };
 
     setStyles(newStyles);
@@ -49,7 +49,7 @@ function App() {
                   id="color"
                   name="color"
                   value={styles.color}
-                  onChange={(e) => handleStyles("color", e.target.value)}
+                  onChange={(e) => handleStyles({ color: e.target.value })}
                 />
               </div>
               <div className="background-section">
@@ -61,7 +61,7 @@ function App() {
                   name="background"
                   value={styles.backgroundColor}
                   onChange={(e) =>
-                    handleStyles("backgroundColor", e.target.value)
+                    handleStyles({ backgroundColor: e.target.value })
                   }
                 />
               </div>
@@ -78,7 +78,7 @@ function App() {
                 step="1"
                 value={styles.borderRadius}
                 onChange={(e) =>
-                  handleStyles("borderRadius", parseInt(e.target.value))
+                  handleStyles({ borderRadius: parseInt(e.target.value) })
                 }
               />
             </div>
