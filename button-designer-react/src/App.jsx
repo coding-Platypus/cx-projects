@@ -3,14 +3,40 @@ import "./App.css";
 
 function App() {
   const [text, setText] = useState("Click Me");
-  const [color, setColor] = useState("#ffffff");
-  const [background, setBackground] = useState("#0000ff");
-  const [border, setBorder] = useState("0");
+  const [styles, setStyles] = useState({
+    color: "#ffffff",
+    backgroundColor: "#0000ff",
+    borderRadius: "0",
+  });
+
+  function handleColorChange(newColor) {
+    const newStyles = {
+      ...styles,
+      color: newColor,
+    };
+    setStyles(newStyles);
+  }
+
+  function handleBackgroundColor(newColor) {
+    const newStyles = {
+      ...styles,
+      backgroundColor: newColor,
+    };
+    setStyles(newStyles);
+  }
+
+  function handleBorder(newBorderRadius) {
+    const newStyles = {
+      ...styles,
+      borderRadius: newBorderRadius,
+    };
+    setStyles(newStyles);
+  }
 
   const customButtonStyle = {
-    color: color,
-    backgroundColor: background,
-    borderRadius: `${border}px`,
+    color: styles.color,
+    backgroundColor: styles.backgroundColor,
+    borderRadius: `${styles.borderRadius}px`,
   };
 
   return (
@@ -37,8 +63,8 @@ function App() {
                   type="color"
                   id="color"
                   name="color"
-                  value={color}
-                  onChange={(e) => setColor(e.target.value)}
+                  value={styles.color}
+                  onChange={(e) => handleColorChange(e.target.value)}
                 />
               </div>
               <div className="background-section">
@@ -48,8 +74,8 @@ function App() {
                   type="color"
                   id="background"
                   name="background"
-                  value={background}
-                  onChange={(e) => setBackground(e.target.value)}
+                  value={styles.backgroundColor}
+                  onChange={(e) => handleBackgroundColor(e.target.value)}
                 />
               </div>
             </div>
@@ -63,8 +89,8 @@ function App() {
                 min="0"
                 max="100"
                 step="1"
-                value={border}
-                onChange={(e) => setBorder(parseInt(e.target.value))}
+                value={styles.borderRadius}
+                onChange={(e) => handleBorder(parseInt(e.target.value))}
               />
             </div>
           </form>
