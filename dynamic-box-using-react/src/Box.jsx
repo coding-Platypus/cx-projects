@@ -2,16 +2,17 @@ import React, { useState } from "react";
 
 import "./App.css";
 
-function Box({ children }) {
-  const [clicked, setClicked] = useState(1);
+function Box({ children, removeBox }) {
+  const [clicked, setClicked] = useState(0);
   const [color, setColor] = useState("darkmagenta");
-  const [removeBox, setRemoveBox] = useState(false);
 
   function handleBoxClick() {
-    setClicked(clicked + 1);
-    if (clicked === 3) {
-      setRemoveBox(true);
-    } else if (clicked === 2) {
+    const newClicked = clicked + 1;
+    setClicked(newClicked);
+
+    if (newClicked === 3) {
+      removeBox();
+    } else if (newClicked === 2) {
       setColor("red");
     } else {
       setColor("green");
@@ -20,16 +21,14 @@ function Box({ children }) {
 
   return (
     <>
-      {!removeBox && (
-        <div
-          className="box"
-          style={{ backgroundColor: color }}
-          id={children}
-          onClick={handleBoxClick}
-        >
-          {children}
-        </div>
-      )}
+      <div
+        className="box"
+        style={{ backgroundColor: color }}
+        id={children}
+        onClick={handleBoxClick}
+      >
+        {children}
+      </div>
     </>
   );
 }
