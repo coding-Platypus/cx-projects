@@ -62,7 +62,7 @@ function App() {
         <ul>
           {toDos.map((toDo, index) => (
             <ToDo
-              key={index}
+              key={toDo.id}
               index={index}
               toDo={toDo}
               removeTodo={() => removeTodo(index)}
