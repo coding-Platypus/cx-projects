@@ -7,19 +7,24 @@ function App() {
   const [toDos, setToDos] = useState([]);
   const [text, setText] = useState("");
   const [count, setCount] = useState(0);
-  const [completedTaskCount, setCompletedTaskCount] = useState(0);
+  const [deleteTask, setDeleteTask] = useState(false);
+  let completedTaskCount = toDos.filter((item) => item.isCompleted).length;
 
   function addToDo() {
     let newCount = count + 1;
     setCount(newCount);
 
-    const updatedToDo = [...toDos, { id: count, name: text }];
+    const updatedToDo = [
+      ...toDos,
+      { id: count, name: text, isCompleted: false },
+    ];
     // console.log(updatedToDo);
     setToDos(updatedToDo);
     setText("");
   }
 
   function removeTodo(toDoId) {
+    setDeleteTask(true);
     const updatedTodo = toDos.filter((_, index) => index !== toDoId);
     let newCount = count - 1;
     setCount(newCount);
@@ -32,34 +37,35 @@ function App() {
     setToDos(newTodo);
   }
 
-  function doneTodo(todoId) {
-    const updatedTodo = toDos.filter((_, index) => index !== todoId);
-    let completedTodo = completedTaskCount + 1;
-    setCompletedTaskCount(completedTodo);
-    setToDos(updatedTodo);
-  }
-
   return (
     <>
+      <h3>To-Dos</h3>
       <form>
-        <div className="text-section">
-          <label htmlFor="text">To-Dos</label> <br />
+        <div className="todo-section">
+          <br />
           <input
             type="text"
             id="text"
             name="text"
             onChange={(e) => setText(e.target.value)}
+            placeholder="Your To-do..."
             value={text}
           />
         </div>
         <div className="button-section">
-          <button type="button" onClick={addToDo}>
+          <button className="btn" type="button" onClick={addToDo}>
             Add Task
           </button>
         </div>
       </form>
       <div className="to-do-list-section">
-        <ul>
+        {toDos.length > 0 && <h3>Your To-Dos</h3>}
+
+        <ul
+          className={
+            "list-items" + " " + (toDos.length > 0 ? "border-class" : "")
+          }
+        >
           {toDos.map((toDo, index) => (
             <ToDo
               key={toDo.id}
